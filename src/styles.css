@@ -1,0 +1,11 @@
+:root {
+  --color-background-error: #ef476f;
+  --color-background-success: #06d6a0;
+  --color-text-primary: #ffffff;
+}
+
+body {
+  overflow: hidden;
+  height: 100vh;
+  max-height: 100vh;
+}
