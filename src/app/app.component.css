@@ -6,6 +6,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  transition-property: opacity;
+  transition-duration: 500ms;
+  transition-delay: 0;
 }
 
 #main-content #pdf-form {
@@ -61,17 +65,14 @@
   cursor: pointer;
 }
 
-.hide-main-content {
-  animation-name: hideMainContent;
-  animation-duration: 500ms;
-  animation-fill-mode: both;
-}
+/* pdf generation view stylesheet */
 
 #pdf-generation-view {
   height: 100vh;
+  
   transition-property: opacity;
   transition-duration: 500ms;
-  transition-delay: 500ms;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,21 +85,7 @@
   align-items: center;
 }
 
-#pdf-generation-view .loading-content #cancel-btn {
-  height: 1.5rem;
-  border: 1px solid var(--background-error);
-  color: var(--background-error) !important;
-  background: #00000000;
-  margin-top: .8rem;
-  font-size: 1rem;
-  transition: background .3s, color .3s;
-}
-
-#pdf-generation-view .loading-content #cancel-btn:hover {
-  background: var(--background-error);
-  color: var(--color-text-primary) !important;
-  cursor: pointer;
-}
+/* loader */
 
 .loader {
   width: 2rem;
@@ -111,19 +98,15 @@
   animation-iteration-count: infinite;
 }
 
+/* queries */
+
 @media (min-width: 1240px) {
   #main-content #pdf-form .input-container, #main-content #pdf-form #generate {
     width: 65%;
   }
 }
 
-@keyframes hideMainContent {
-  from {
-    opacity: 1;
-  } to {
-    opacity: 0;
-  }
-}
+/* animations */
 
 @keyframes rotateLoader {
   to {

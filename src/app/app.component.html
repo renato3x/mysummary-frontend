@@ -1,8 +1,8 @@
 <main
   *ngIf="!removeMainContent"
   id="main-content"
-  [ngClass]="{ 
-    'hide-main-content': showPdfGenerationView 
+  [ngStyle]="{
+    opacity: mainContentOpacity
   }"
 >
   <h1 translate="no">My Summary</h1>
@@ -32,11 +32,12 @@
 </main>
 <div 
   id="pdf-generation-view"
-  [ngStyle]="{ opacity: showPdfGenerationView ? 1 : 0 }"
+  [ngStyle]="{
+    opacity: pdfGenerationViewOpacity
+  }"
 >
   <div class="loading-content">
     <h2>Gerando PDF, aguarde...</h2>
     <div class="loader"></div>
-    <button id="cancel-btn">Cancelar</button>
   </div>
 </div>
