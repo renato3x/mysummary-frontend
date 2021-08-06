@@ -1,0 +1,68 @@
+/* main content stylesheet */
+
+#main-content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#main-content #pdf-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-content #pdf-form .input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+#main-content #pdf-form .input-container + .input-container {
+  margin-top: .3rem;
+}
+
+#main-content #pdf-form .input-container label {
+  align-self: flex-start;
+  margin-bottom: .2rem;
+  font-size: 1.2rem;
+}
+
+#main-content #pdf-form .input-container input {
+  width: 100%;
+  padding: .5rem;
+  height: 2rem;
+  box-sizing: border-box;
+  color: var(--color-text-secondary) !important;
+  font-size: 1rem;
+  outline: none;
+  border: none
+}
+
+#main-content #pdf-form #generate {
+  margin-top: .7rem;
+  width: 80%;
+  height: 2rem;
+  border: 1px solid var(--color-text-primary);
+  background: #00000000;
+  font-size: 1rem;
+  transition: background .3s, color .3s;
+}
+
+#main-content #pdf-form #generate:hover {
+  background: var(--color-text-primary);
+  color: var(--color-text-secondary) !important;
+  cursor: pointer;
+}
+
+@media (min-width: 1240px) {
+  #main-content #pdf-form .input-container, #main-content #pdf-form #generate {
+    width: 65%;
+  }
+}

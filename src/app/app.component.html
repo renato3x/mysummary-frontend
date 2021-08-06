@@ -1,0 +1,28 @@
+<main 
+  id="main-content"
+>
+  <h1 translate="no">My Summary</h1>
+  <div id="pdf-form">
+    <div class="input-container">
+      <label for="title" translate="yes">Título</label>
+      <input 
+        type="text" 
+        id="title" 
+        placeholder="Meu Título"
+        translate="yes"
+      >
+    </div>
+
+    <div class="input-container">
+      <label for="url" translate="yes">URL</label>
+      <input 
+      type="text" 
+      id="url" 
+      placeholder="www.meusite.com"
+      translate="yes"
+    >
+    </div>
+
+    <button id="generate" type="button" (click)="startPdfGeneration()">Gerar PDF</button>
+  </div>
+</main>
