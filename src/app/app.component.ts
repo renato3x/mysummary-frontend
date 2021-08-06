@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  startPdfGeneration() {
+  showPdfGenerationView: boolean = false
+  removeMainContent: boolean = false
 
+  startPdfGeneration() {
+    this.showPdfGenerationView = true
+    setTimeout(() => {
+      this.removeMainContent = true
+    }, 500)
   }
 }
