@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import validator from 'validator';
@@ -15,6 +16,8 @@ export class AppComponent {
   pdfDownloadUrl: string | null = null
   loadingContentOpacity: number = 1
   successContentOpacity: number = 0
+  errorContentOpacity: number = 0
+  errorMessage: string | null = null
 
   title: FormControl = new FormControl('', [
     Validators.required
@@ -46,6 +49,12 @@ export class AppComponent {
         setTimeout(() => {
           this.pdfDownloadUrl = pdfUrl
           this.successContentOpacity = 1
+        }, 500)
+      }, (error: HttpErrorResponse) => {
+        this.loadingContentOpacity = 0
+        setTimeout(() => {
+          this.errorMessage = error.error.message
+          this.errorContentOpacity = 1
         }, 500)
       })
     }, 500)

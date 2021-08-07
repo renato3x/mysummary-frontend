@@ -40,10 +40,11 @@
     opacity: pdfGenerationViewOpacity
   }"
   [ngClass]="{
-    'success': pdfDownloadUrl != null
+    'success': pdfDownloadUrl != null,
+    'error': pdfDownloadUrl == null && errorMessage != null
   }"
 >
-  <div class="loading-content" *ngIf="pdfDownloadUrl == null" [ngStyle]="{ opacity: loadingContentOpacity }">
+  <div class="loading-content" *ngIf="pdfDownloadUrl == null && errorMessage == null" [ngStyle]="{ opacity: loadingContentOpacity }">
     <h2>Gerando PDF, aguarde...</h2>
     <div class="loader"></div>
   </div>
@@ -51,5 +52,9 @@
     <h2>PDF Gerado com sucesso</h2>
     <a [href]="pdfDownloadUrl" target="_blank" rel="noopener noreferrer">Clique aqui para baixar</a>
     <button id="reset" (click)="reset()">Gerar outro PDF</button>
+  </div>
+  <div class="error-content" *ngIf="pdfDownloadUrl == null && errorMessage != null" [ngStyle]="{ opacity: errorContentOpacity }">
+    <h2 translate="yes">{{ errorMessage }}</h2>
+    <button id="retry" (click)="reset()">Tentar novamente</button>
   </div>
 </div>
