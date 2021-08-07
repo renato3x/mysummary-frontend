@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import validator from 'validator';
+import { PdfApiService } from './services/pdf-api.service';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,8 @@ export class AppComponent {
     Validators.required
   ])
 
+  constructor(private pdfApiService: PdfApiService) {}
+
   startPdfGeneration(): void | any {
     if (!validator.isURL(this.url.value)) {
       alert('A URL informada é inválida')
@@ -31,6 +34,13 @@ export class AppComponent {
     setTimeout(() => {
       this.removeMainContent = true
       this.pdfGenerationViewOpacity = 1
+
+      let pdfTitle = this.title.value
+      let url = this.url.value
+
+      this.pdfApiService.generatePdf(pdfTitle, url).subscribe(response => {
+        console.log(response)
+      })
     }, 500)
   }
 
