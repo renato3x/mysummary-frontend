@@ -39,9 +39,17 @@
   [ngStyle]="{
     opacity: pdfGenerationViewOpacity
   }"
+  [ngClass]="{
+    'success': pdfDownloadUrl != null
+  }"
 >
-  <div class="loading-content">
+  <div class="loading-content" *ngIf="pdfDownloadUrl == null" [ngStyle]="{ opacity: loadingContentOpacity }">
     <h2>Gerando PDF, aguarde...</h2>
     <div class="loader"></div>
+  </div>
+  <div class="success-content" *ngIf="pdfDownloadUrl != null" [ngStyle]="{ opacity: successContentOpacity }">
+    <h2>PDF Gerado com sucesso</h2>
+    <a [href]="pdfDownloadUrl" target="_blank" rel="noopener noreferrer">Clique aqui para baixar</a>
+    <button id="reset" (click)="reset()">Gerar outro PDF</button>
   </div>
 </div>

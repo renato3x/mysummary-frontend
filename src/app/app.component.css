@@ -80,8 +80,8 @@
 
 #pdf-generation-view {
   height: 100vh;
-  
-  transition-property: opacity;
+  background: var(--background-primary);
+  transition-property: opacity, background;
   transition-duration: 500ms;
 
   display: flex;
@@ -94,6 +94,30 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: opacity .5s;
+}
+
+#pdf-generation-view .success-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity .5s;
+}
+
+#pdf-generation-view .success-content #reset {
+  margin-top: 1rem;
+  border: 1px solid var(--color-text-primary);
+  background: transparent;
+  cursor: pointer;
+  font-size: .8rem;
+  height: 1.5rem;
+  transition: background .3s, color .3s;
+}
+
+#pdf-generation-view .success-content #reset:hover {
+  background: var(--color-text-primary) !important;
+  color: var(--background-success) !important;
 }
 
 /* auxiliar */
@@ -111,6 +135,14 @@
 
 .input-invalid {
   border-color: var(--background-error) !important;
+}
+
+.error {
+  background: var(--background-error) !important;
+}
+
+.success {
+  background: var(--background-success) !important;
 }
 
 /* queries */

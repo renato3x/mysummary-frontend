@@ -12,6 +12,9 @@ export class AppComponent {
   mainContentOpacity: number = 1
   pdfGenerationViewOpacity: number = 0
   removeMainContent: boolean = false
+  pdfDownloadUrl: string | null = null
+  loadingContentOpacity: number = 1
+  successContentOpacity: number = 0
 
   title: FormControl = new FormControl('', [
     Validators.required
@@ -38,8 +41,12 @@ export class AppComponent {
       let pdfTitle = this.title.value
       let url = this.url.value
 
-      this.pdfApiService.generatePdf(pdfTitle, url).subscribe(response => {
-        console.log(response)
+      this.pdfApiService.generatePdf(pdfTitle, url).subscribe(({ pdfUrl }) => {
+        this.loadingContentOpacity = 0
+        setTimeout(() => {
+          this.pdfDownloadUrl = pdfUrl
+          this.successContentOpacity = 1
+        }, 500)
       })
     }, 500)
   }
