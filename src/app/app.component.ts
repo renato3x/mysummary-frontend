@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import validator from 'validator';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,21 @@ export class AppComponent {
   pdfGenerationViewOpacity: number = 0
   removeMainContent: boolean = false
 
-  startPdfGeneration() {
+  title: FormControl = new FormControl('', [
+    Validators.required
+  ])
+
+  url: FormControl = new FormControl('', [
+    Validators.required
+  ])
+
+  startPdfGeneration(): void | any {
+    if (!validator.isURL(this.url.value)) {
+      alert('A URL informada é inválida')
+      this.url.setErrors(Validators.required)
+      return
+    }
+
     this.mainContentOpacity = 0
     setTimeout(() => {
       this.removeMainContent = true

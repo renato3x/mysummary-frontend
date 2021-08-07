@@ -46,7 +46,8 @@
   color: var(--color-text-secondary) !important;
   font-size: 1rem;
   outline: none;
-  border: none
+  border: 1px solid transparent;
+  transition: border .3s;
 }
 
 #main-content #pdf-form #generate {
@@ -56,13 +57,23 @@
   border: 1px solid var(--color-text-primary);
   background: #00000000;
   font-size: 1rem;
-  transition: background .3s, color .3s;
+  transition: background .3s, color .3s, filter .3s;
 }
 
 #main-content #pdf-form #generate:hover {
   background: var(--color-text-primary);
   color: var(--color-text-secondary) !important;
   cursor: pointer;
+}
+
+#main-content #pdf-form #generate[disabled] {
+  cursor: auto;
+  filter: opacity(.6);
+}
+
+#main-content #pdf-form #generate[disabled]:hover {
+  background: #00000000;
+  color: var(--color-text-primary) !important;
 }
 
 /* pdf generation view stylesheet */
@@ -85,7 +96,7 @@
   align-items: center;
 }
 
-/* loader */
+/* auxiliar */
 
 .loader {
   width: 2rem;
@@ -96,6 +107,10 @@
   animation-name: rotateLoader;
   animation-duration: 1s;
   animation-iteration-count: infinite;
+}
+
+.input-invalid {
+  border-color: var(--background-error) !important;
 }
 
 /* queries */

@@ -14,6 +14,8 @@
         id="title" 
         placeholder="Meu Título"
         translate="yes"
+        [formControl]="title"
+        [ngClass]="{ 'input-invalid': title.touched && title.invalid }"
       >
     </div>
 
@@ -24,10 +26,12 @@
       id="url" 
       placeholder="www.meusite.com"
       translate="yes"
+      [formControl]="url"
+      [ngClass]="{ 'input-invalid': url.touched && url.invalid }"
     >
     </div>
 
-    <button id="generate" type="button" (click)="startPdfGeneration()">Gerar PDF</button>
+    <button id="generate" type="button" (click)="startPdfGeneration()" [disabled]="title.invalid || url.invalid">Gerar PDF</button>
   </div>
 </main>
 <div 
