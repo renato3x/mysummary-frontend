@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Socket } from 'ngx-socket-io';
 import validator from 'validator';
+import { RequestData } from './interfaces/request-data';
 import { PdfApiService } from './services/pdf-api.service';
 
 @Component({
@@ -18,6 +20,8 @@ export class AppComponent {
   successContentOpacity: number = 0
   errorContentOpacity: number = 0
   errorMessage: string | null = null
+  requestQuantity: number = 0
+  canRequest: boolean = true
 
   title: FormControl = new FormControl('', [
     Validators.required
@@ -27,12 +31,24 @@ export class AppComponent {
     Validators.required
   ])
 
-  constructor(private pdfApiService: PdfApiService) {}
+  constructor(private pdfApiService: PdfApiService, private socket: Socket) {}
+
+  ngOnInit() {
+    this.socket.on('requestQuantity', (response: RequestData) => {
+      this.requestQuantity = response.requestQuantity
+      this.canRequest = response.canRequest
+    })
+  }
 
   startPdfGeneration(): void | any {
     if (!validator.isURL(this.url.value)) {
       alert('A URL informada é inválida')
       this.url.setErrors(Validators.required)
+      return
+    }
+
+    if (!this.canRequest) {
+      alert('Não é mais possível gerar PDFs hoje pois o limite já foi alcançado. Tente novamente amanhã.')
       return
     }
 

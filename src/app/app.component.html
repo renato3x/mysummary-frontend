@@ -6,6 +6,13 @@
   }"
 >
   <h1 translate="no">My Summary</h1>
+  <p>
+    <span 
+      class="badge"
+      [ngStyle]="{ background: requestQuantity == 100 ? 'var(--background-error)' : 'var(--color-text-secondary)' }"
+    >{{ requestQuantity }}</span> 
+    PDFs gerados hoje
+  </p>
   <div id="pdf-form">
     <div class="input-container">
       <label for="title" translate="yes">Título</label>
@@ -31,7 +38,7 @@
     >
     </div>
 
-    <button id="generate" type="button" (click)="startPdfGeneration()" [disabled]="title.invalid || url.invalid">Gerar PDF</button>
+    <button id="generate" type="button" (click)="startPdfGeneration()" [disabled]="title.invalid || url.invalid || !canRequest">Gerar PDF</button>
   </div>
 </main>
 <div 

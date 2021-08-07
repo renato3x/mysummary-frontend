@@ -12,6 +12,10 @@
   transition-delay: 0;
 }
 
+#main-content > h1 {
+  margin-bottom: 0;
+}
+
 #main-content #pdf-form {
   width: 100%;
   display: flex;
@@ -152,6 +156,14 @@
 
 .success {
   background: var(--background-success) !important;
+}
+.badge {
+  display: inline-block;
+  text-align: center;
+  background: var(--color-text-secondary);
+  height: fit-content;
+  padding: .3rem;
+  padding-bottom: .25rem;
 }
 
 /* queries */
