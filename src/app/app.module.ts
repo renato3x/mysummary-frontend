@@ -5,8 +5,9 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment as env } from '../environments/environment'
 
-const config: SocketIoConfig = { url: 'http://localhost:3000' }
+const config: SocketIoConfig = { url: env.pdfApiURL }
 
 @NgModule({
   declarations: [
