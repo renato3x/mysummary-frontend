@@ -13,13 +13,16 @@ import { PdfApiService } from './services/pdf-api.service';
 })
 export class AppComponent {
   mainContentOpacity: number = 1
-  pdfGenerationViewOpacity: number = 0
   removeMainContent: boolean = false
+
+  errorMessage: string | null = null
   pdfDownloadUrl: string | null = null
+
+  pdfGenerationViewOpacity: number = 0
   loadingContentOpacity: number = 1
   successContentOpacity: number = 0
   errorContentOpacity: number = 0
-  errorMessage: string | null = null
+  
   requestQuantity: number = 0
   canRequest: boolean = true
 
@@ -82,6 +85,12 @@ export class AppComponent {
       this.removeMainContent = false
       setTimeout(() => {
         this.mainContentOpacity = 1
+        this.loadingContentOpacity = 1
+        this.errorContentOpacity = 0
+        this.successContentOpacity = 0
+
+        this.pdfDownloadUrl = null
+        this.errorMessage = null
       }, 15)
     }, 500)
   }
