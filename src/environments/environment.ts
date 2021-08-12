@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  pdfApiURL: 'http://localhost:3000'
+  production: true,
+  pdfApiURL: 'https://api-mysummary.herokuapp.com/'
 };
 
 /*
