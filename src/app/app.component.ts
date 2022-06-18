@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { Socket } from 'ngx-socket-io';
 import validator from 'validator';
 import { RequestData } from './interfaces/request-data';
@@ -26,11 +26,11 @@ export class AppComponent {
   requestQuantity: number = 0
   canRequest: boolean = true
 
-  title: FormControl = new FormControl('', [
+  title: UntypedFormControl = new UntypedFormControl('', [
     Validators.required
   ])
 
-  url: FormControl = new FormControl('', [
+  url: UntypedFormControl = new UntypedFormControl('', [
     Validators.required
   ])
 
