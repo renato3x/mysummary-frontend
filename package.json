@@ -7,7 +7,8 @@
     "start": "node app",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "serve": "ng serve"
   },
   "private": true,
   "dependencies": {
@@ -27,7 +28,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.0.2",
+    "@angular-devkit/build-angular": "^14.0.2",
     "@angular/cli": "~12.0.2",
     "@angular/compiler-cli": "~12.0.2",
     "@types/jasmine": "~3.6.0",
